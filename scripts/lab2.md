@@ -41,4 +41,4 @@ Then append following:
 <VirtualHost 192.168.153.X:80>DocumentRoot /ipvhost/ServerName ipvhost.example.com<Directory /ipvhost/>Options Indexes FollowSymLinksAllowOverride NoneRequire all granted</Directory></VirtualHost>
 ```
 ## 7. restart apache and test as lab 1
-`$ sudo systemctl restart httpd`
+`$ sudo systemctl restart apache2`
