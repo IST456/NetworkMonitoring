@@ -1,4 +1,4 @@
-# Lab 4: Create password protected sub directory
+# Lab 4: Create Password Protected Sub-Directory
 
 Goal of this lab includes:
 * Create the directory secure in the default document root.
