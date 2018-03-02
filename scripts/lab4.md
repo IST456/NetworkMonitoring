@@ -58,7 +58,7 @@ $ sudo htpasswd2 -c $FILENAME bob
 You may have to install **apache2-utils** if `htpasswd` does not exist.
 
 
-## 4. Restart apache
+## 4. Restart Apache
 ```
 //CentOS
 $ sudo systemctl restart httpd
@@ -66,4 +66,5 @@ $ sudo systemctl restart httpd
 $ sudo systemctl restart apache2
 ```
 
-## 5. Verify that the directory is password protected and that bob is allowed to log in.
+## 5. Test
+Verify that the directory is password protected and that bob is allowed to log in.
