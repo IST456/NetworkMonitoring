@@ -1,4 +1,4 @@
-# Lab 2 Document Root in Virtual Network Interface 
+# Lab 2 :  Document Root in Virtual Network Interface 
 Serve two document roots at same time, original file accessible at original IP address, while new one works as well
 
 ## 1. Create IP alias
