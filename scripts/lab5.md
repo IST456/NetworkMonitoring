@@ -15,35 +15,53 @@ In this lab, we will create and test a self-signed SSL certificate.
 
 ```
 $ sudo -i
-// On CentOS:
-# mv /etc/pki/tls/private/localhost.key /etc/pki/tls/private/localhost.key.orig
-// On Ubuntu:
-# mv /etc/ssl/private/ssl-cert-snakeoil.key  /etc/ssl/private/ssl-cert-snakeoil.key.orig
-//On OpenSUSE: 
-//There is no key by default so nothing needs to be backed up.
 ```
+### 1.1 On CentOS
+```
+# mv /etc/pki/tls/private/localhost.key /etc/pki/tls/private/localhost.key.orig
+```
+
+### 1.2 On Ubuntu:
+```
+# mv /etc/ssl/private/ssl-cert-snakeoil.key  /etc/ssl/private/ssl-cert-snakeoil.key.orig
+```
+
+
+### 1.3 On OpenSUSE: 
+There is no key by default so nothing needs to be backed up.
+
 
 
 ## 2. Create a new private key
+
+### 2.1 On CentOS:
 ```
-// On CentOS:
 # /usr/bin/openssl genrsa -aes128 2048 > /etc/pki/tls/private/localhost.key
-// On OpenSUSE:
+```
+### 2.2 On OpenSUSE:
+```
 # /usr/bin/openssl genrsa -aes128 2048 > /etc/apache2/ssl.key/server.key
-// On Ubuntu:
+```
+### 2.3 On Ubuntu:
+```
 # /usr/bin/openssl genrsa -aes128 2048 > /etc/ssl/private/server.key
 ```
 
 
 ## 3. Create a new self-signed SSL certificate
+
+### 3.1 On CentOS:
 ```
-// On CentOS:
 # /usr/bin/openssl req -utf8 -new -key /etc/pki/tls/private/localhost.key -x509\
 -days 365 -out /etc/pki/tls/certs/localhost.crt -set_serial 0
-// On OpenSUSE:
+```
+### 3.2 On OpenSUSE:
+```
 # /usr/bin/openssl req -utf8 -new -key /etc/apache2/ssl.key/server.key -x509 \
 -days 365 -out /etc/apache2/ssl.crt/server.crt -set_serial 0
-// On Ubuntu:
+```
+### 3.3 On Ubuntu:
+```
 # /usr/bin/openssl req -utf8 -new -key /etc/ssl/private/server.key -x509 \
 -days 365 -out /etc/ssl/certs/server.crt -set_serial 0
 ```
@@ -51,7 +69,7 @@ $ sudo -i
 
 ## 4. Update the Apache configuration (if needed)
 
-* On Ubuntu: Enable SSL vhost
+### 4.1 On Ubuntu: Enable SSL vhost
 ```
 // On Ubuntu: Enable SSL vhost
 # ln -s /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-enabled/
@@ -70,7 +88,7 @@ SSLCertificateKeyFile /etc/ssl/private/server.key
 Note: You may have to comment out the directives **SSLSessionCache** and
 **SSLSessionCacheTimeout** from the `/etc/apache2/mods-enabled/ssl.conf` file.
 
-* On OpenSUSE: Enable SSL vhost
+### 4.2 On OpenSUSE: Enable SSL vhost
 ```
 # cp /etc/apache2/vhosts.d/vhost-ssl.template /etc/apache2/vhosts.d/vhost-ssl.conf
 ```
@@ -80,17 +98,20 @@ the string **”SSL”** to the variable **APACHE SERVER FLAGS** so it looks lik
 APACHE_SERVER_FLAGS="SSL"
 ```
 
-* On CentOS:
+### 4.3 On CentOS:
 
 There are no configuration changes needed.
 
 ## 5. Restart Apache and test your new certificate. 
 You may have to add **ipvhost.example.com**  to your `/etc/hosts` file.
 
+### 5.1 On CentOS:
 ```
-// On CentOS:
 # systemctl restart httpd
-// On Ubuntu or OpenSUSE:
+```
+
+### 5.2 On Ubuntu or OpenSUSE:
+```
 # systemctl restart apache2
 ```
 
