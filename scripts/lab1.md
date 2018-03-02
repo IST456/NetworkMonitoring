@@ -1,4 +1,4 @@
-# Lab 1. Install Apache Server 
+# Lab 1 :  Install Apache Server 
 This lab is using Ubuntu.
 
 ## 1. install apache 
